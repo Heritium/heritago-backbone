@@ -1,0 +1,5 @@
+node_modules/
+cordova/platforms/android/
+cordova/plugins/
+!cordova/plugins/*.json
+cordova/www/

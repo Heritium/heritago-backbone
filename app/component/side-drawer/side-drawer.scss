@@ -1,0 +1,86 @@
+@import "mui";
+@import "mui-colors";
+
+/* @component: SearchBar
+ */
+side-drawer {
+    @include izzel-component($overflow: visible);
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    left: -200px;
+    z-index: 4;
+    transition: transform 0.2s;
+    box-shadow: none;
+
+    &.active {
+        @extend .mui--z4;
+
+        transform: translate(200px);
+        visibility: visible;
+    }
+
+    .active-shader {
+        background-color: mui-color('black-alpha-38');
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin-left: 0;
+        height: 100vh;
+        opacity: 0;
+        display: none;
+        transition: opacity 0.2s;
+        width: 200vw;
+        z-index: -4;
+    }
+
+    &.active .active-shader {
+        background-color: mui-color('black-alpha-38');
+        display: block;
+        margin-left: 0;
+        opacity: 38;
+        position: absolute;
+        z-index: -4;
+    }
+
+    .sidedrawer-inner-wrapper {
+        background-color: mui-color('white');
+        height: 100%;
+        width: 100%;
+        z-index: 4;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0px;
+    }
+
+    ul > li {
+        display: block;
+        cursor: pointer;
+    }
+
+    ul > li > a {
+        display: block;
+        height: 100%;
+        padding: 15px 22px;
+        width: 100%;
+        color: mui-color('blue-grey', '500');
+    }
+
+    ul > li:hover,
+    ul > li.active {
+        background-color: mui-color('blue-grey', '50');
+    }
+
+    ul > li:hover > a,
+    ul > li.active > a {
+        text-decoration: none;
+        color: mui-color('blue-grey', '500');
+    }
+
+}

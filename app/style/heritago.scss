@@ -1,0 +1,54 @@
+@import "mui";
+@import "mui-colors";
+
+/* Global style
+ */
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+/* MUI Addon
+ */
+/* Grids */
+.mui-row--no-gutter {
+    margin-left: 0;
+    margin-right: 0;
+
+    & > [class*="mui-col-"] {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* Forms */
+.mui-textfield--no-border [type="search"],
+.mui-textfield--no-border [type="text"]
+{
+    border: 0;
+}
+
+/* Izzel Style Helper
+ */
+@mixin izzel-activity($display: block, $overflow: hidden) {
+    // All custom element style
+    display: $display;
+    overflow: $overflow;
+    height: 100%;
+    width: 100%;
+}
+
+@mixin izzel-component($display: block, $overflow: hidden) {
+    // All custom element style
+    display: $display;
+    overflow: $overflow;
+}
+
+// Activity
+@import "activity/explore/explore";
+
+// Component
+@import "component/float-bar/float-bar";
+@import "component/side-drawer/side-drawer";
+@import "component/heritago-map/heritago-map";

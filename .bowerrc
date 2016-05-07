@@ -1,0 +1,5 @@
+{
+  "directory": "cordova/www/library/",
+  "analytics": false,
+  "timeout": 120000
+}

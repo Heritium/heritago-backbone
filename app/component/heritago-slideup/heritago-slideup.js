@@ -1,8 +1,8 @@
 var Izzel = require('izzel');
 var _ = require('underscore');
 
-var HeritagoSlideUp = Izzel.Component.extend({
-    layout: require('./heritago-slide-up.hbs'),
+var HeritagoSlideup = Izzel.Component.extend({
+    layout: require('./heritago-slideup.hbs'),
     el: 'heritago-slide-up',
     initialize: function() {
         // Put model listener here

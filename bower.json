@@ -24,6 +24,8 @@
     "tests"
   ],
   "dependencies": {
-    "mui": "^0.5.7"
+    "mui": "^0.5.7",
+    "jquery": "^2.2.3",
+    "material-icons": "^0.1.0"
   }
 }

@@ -1,0 +1,29 @@
+{
+  "name": "heritago",
+  "description": "Heritage advanture guide.",
+  "main": "script/init.js",
+  "authors": [
+    "Heritium",
+    "Co."
+  ],
+  "license": "GPL-3.0",
+  "keywords": [
+    "heritage",
+    "advanture",
+    "gamification"
+  ],
+  "homepage": "https://github.com/Heritium/heritago-backbone",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "cordova/www/library/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mui": "^0.5.7"
+  }
+}

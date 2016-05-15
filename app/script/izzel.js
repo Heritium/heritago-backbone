@@ -8,10 +8,6 @@ var SharedExtension = Izzel.View.extend({
     dependencies: {},
     components: {},
 
-    initialize: function() {
-        this.render();
-    },
-
     getSelector: function() {
         var tagName = this.el.tagName.toLowerCase();
         var classNames = this.el.className? '.' + this.el.className.replace(' ', '.') : '';
@@ -32,12 +28,15 @@ var SharedExtension = Izzel.View.extend({
             var depSelector = this.getSelector() + ' ' + dep;
 
             this.components[dep] = new this.dependencies[dep]({ el: depSelector });
-            this.components[dep].render();
         }
     },
 });
 
 Izzel.Component = SharedExtension.extend({
+    initialize: function() {
+        this.render({});
+    },
+
     getAttributes: function() {
         var attrs = this.el.attributes;
         var attributes = {};
@@ -70,6 +69,10 @@ Izzel.Component = SharedExtension.extend({
 
 Izzel.Activity = SharedExtension.extend({
     el: 'activity',
+
+    initialize: function() {
+        this.render({});
+    },
 
     render: function(context) {
         this.beforeCreate();

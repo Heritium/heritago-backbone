@@ -9,6 +9,9 @@ var SideDrawer = Izzel.Component.extend({
         'keyup input': 'search',
     },
     initialize: function() {
+        // This should be called on initialization
+        this.render();
+
         // Put model listener here
         // Event listener
         window.izzel.dispatcher.on('floatbar:toggle-side-drawer', this.toggleVisibility, this);

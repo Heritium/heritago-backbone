@@ -10,6 +10,9 @@ var FloatBar = Izzel.Component.extend({
         'keyup input[type=search]': 'onSearchInput',
     },
     initialize: function() {
+        // This should be called on initialization
+        this.render();
+
         // Put model listener here
     },
     toggleSideDrawer: function(ev) {

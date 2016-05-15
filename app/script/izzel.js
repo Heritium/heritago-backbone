@@ -59,7 +59,7 @@ Izzel.Component = SharedExtension.extend({
         if (!this.$el.hasClass('izzel-component')) {
             this.$el.addClass('izzel-component');
         }
-        this._render();
+        this._render(context);
         this.afterRender();
     },
 
@@ -80,7 +80,7 @@ Izzel.Activity = SharedExtension.extend({
         if (!this.$el.hasClass('izzel-activity')) {
             this.$el.addClass('izzel-activity');
         }
-        this._render();
+        this._render(context);
         this.onCreate();
     },
 

@@ -4,7 +4,24 @@ var _ = require('underscore');
 var HeritagoMap = Izzel.Component.extend({
     layout: require('./heritago-map.hbs'),
     el: 'heritago-map',
+    mapOption:{
+        center:undefined,
+        zoom: 12,
+        mapTypeId: undefined
+    },
+    map: undefined,
+
     initialize: function() {
+        this.render();
+
+        this.mapOption.mapTypeId = google.maps.MapTypeId.ROADMAP;
+        var currentLocation = new google.maps.LatLng(-7.801389, 110.364444);
+        this.mapOption.center = currentLocation;
+
+        this.map = new google.maps.Map(this.el, this.mapOption);
+
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+
         // Put model listener here
     },
     search: function(ev) {

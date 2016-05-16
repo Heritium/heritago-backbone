@@ -5,6 +5,8 @@ var HeritagoMap = Izzel.Component.extend({
     layout: require('./heritago-map.hbs'),
     el: 'heritago-map',
     initialize: function() {
+        navigator.geolocation.getCurrentPosition(showPosition);
+        this.render();
         // Put model listener here
     },
     search: function(ev) {
@@ -21,6 +23,24 @@ var HeritagoMap = Izzel.Component.extend({
     },
     
     map: undefined,
+    
+    search: function() {
+        var request = {
+        bounds: map.getBounds(),
+        keyword: "the"
+        }
+        service.nearbySearch(request, searchresult);
+    },
+    
+    searchresult(results, status) {
+        console.log(results);
+        for(var i=0; i<results.length; i++){
+            var marker = new google.maps.Marker({
+                position : results[i].geometry.location,
+                map: map,
+                icon: results[i].icon
+        })};
+    },
     
     showPosition: function (location) {
         console.log(location);

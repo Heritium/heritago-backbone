@@ -9,15 +9,15 @@ var HeritagoMap = Izzel.Component.extend({
     mapOption:{
         center:undefined,
         zoom: 12,
-        mapTypeId: undefined
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     },
     map: undefined,
+
     userLocation: undefined,
 
     initialize: function() {
         this.render();
 
-        this.mapOption.mapTypeId = google.maps.MapTypeId.ROADMAP;
         var currentLocation = new google.maps.LatLng(-7.801389, 110.364444);
         this.mapOption.center = currentLocation;
 
@@ -33,13 +33,6 @@ var HeritagoMap = Izzel.Component.extend({
     locateMe: function(){
         navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
     },
-    mapOption:{
-        center:undefined,
-        zoom: 12,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    },
-
-    map: undefined,
 
     search: function(keyword) {
         var request = {
@@ -72,11 +65,7 @@ var HeritagoMap = Izzel.Component.extend({
             map: this.map
         });
 
-        
-        
-
         $('#refresh').click(search);
-
     },
 });
 

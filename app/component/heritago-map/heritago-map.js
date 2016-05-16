@@ -24,14 +24,10 @@ var HeritagoMap = Izzel.Component.extend({
         this.map = new google.maps.Map(this.el, this.mapOption);
         this.service = new google.maps.places.PlacesService(this.map);
         google.maps.event.addListenerOnce(this.map, 'bounds_changed', search);
-        this.locateMe();
+        this.locateUser();
         this.search("hotel");
 
         // Put model listener here
-    },
-
-    locateMe: function(){
-        navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
     },
 
     search: function(keyword) {
@@ -41,10 +37,10 @@ var HeritagoMap = Izzel.Component.extend({
             radius: 5000,
             location: this.userLocation || new google.maps.LatLng(-7.801389, 110.364444)
         }
-        this.service.nearbySearch(request, this.searchresult);
+        this.service.nearbySearch(request, this.onSearchResultAvailable);
     },
 
-    searchresult(results, status) {
+    onSearchResultAvailable(results, status) {
         console.log(results);
         for(var i=0; i<results.length; i++){
             var marker = new google.maps.Marker({
@@ -54,7 +50,11 @@ var HeritagoMap = Izzel.Component.extend({
         })};
     },
 
-    showPosition: function (location) {
+    locateUser: function() {
+        navigator.geolocation.getCurrentPosition(this.onUserPositionAvailable.bind(this));
+    },
+
+    onUserPositionAvailable: function (location) {
         console.log(location);
         this.userLocation = location;
         var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);

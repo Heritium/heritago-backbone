@@ -7,7 +7,8 @@ var HeritagoMap = Izzel.Component.extend({
     mapOption:{
         center: undefined,
         zoom: 12,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: true,
     },
     map: undefined,
     userLocation: undefined,

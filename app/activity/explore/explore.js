@@ -8,6 +8,7 @@ var ExploreActivity = Izzel.Activity.extend({
         'side-drawer': require('component/side-drawer'),
         'float-bar': require('component/float-bar'),
         'heritago-map': require('component/heritago-map'),
+        'heritago-button': require('component/heritago-button'),
     },
 
     onCreate: function() {

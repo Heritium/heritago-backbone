@@ -1,5 +1,7 @@
 var Izzel = require('izzel');
 var _ = require('underscore');
+var map;
+var service;
 
 var HeritagoMap = Izzel.Component.extend({
     layout: require('./heritago-map.hbs'),
@@ -10,6 +12,7 @@ var HeritagoMap = Izzel.Component.extend({
         mapTypeId: undefined
     },
     map: undefined,
+    userLocation: undefined,
 
     initialize: function() {
         this.render();
@@ -19,18 +22,17 @@ var HeritagoMap = Izzel.Component.extend({
         this.mapOption.center = currentLocation;
 
         this.map = new google.maps.Map(this.el, this.mapOption);
-
-        navigator.geolocation.getCurrentPosition(this.showPosition);
+        this.service = new google.maps.places.PlacesService(this.map);
+        google.maps.event.addListenerOnce(this.map, 'bounds_changed', search);
+        this.locateMe();
+        this.search("hotel");
 
         // Put model listener here
     },
-    search: function(ev) {
-        var text = this.$el.children('input').val();
-        window.izzel.dispatcher.trigger('searchbar:change', this.el, text);
-        console.log('[EVENT] searchbar:change of ', this.el, ' <', text, '>');
+
+    locateMe: function(){
+        navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
     },
-
-
     mapOption:{
         center:undefined,
         zoom: 12,
@@ -39,12 +41,14 @@ var HeritagoMap = Izzel.Component.extend({
 
     map: undefined,
 
-    search: function() {
+    search: function(keyword) {
         var request = {
-        bounds: map.getBounds(),
-        keyword: "the"
+            bounds: this.map.getBounds(),
+            keyword: keyword,
+            radius: 5000,
+            location: this.userLocation || new google.maps.LatLng(-7.801389, 110.364444)
         }
-        service.nearbySearch(request, searchresult);
+        this.service.nearbySearch(request, this.searchresult);
     },
 
     searchresult(results, status) {
@@ -52,28 +56,24 @@ var HeritagoMap = Izzel.Component.extend({
         for(var i=0; i<results.length; i++){
             var marker = new google.maps.Marker({
                 position : results[i].geometry.location,
-                map: map,
+                map: this.map,
                 icon: results[i].icon
         })};
     },
 
     showPosition: function (location) {
         console.log(location);
-
+        this.userLocation = location;
         var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
-
-        this.mapOption.center = currentLocation;
-
-        this.map = new google.maps.Map(document.getElementById("map-canvas"),this.mapOption);
-
+        this.map.setCenter(currentLocation);
 
         var marker = new google.maps.Marker({
             position: currentLocation,
             map: this.map
         });
 
-        service = new google.maps.places.PlacesService(this.map);
-        google.maps.event.addListenerOnce(this.map, 'bounds_changed', search);
+        
+        
 
         $('#refresh').click(search);
 

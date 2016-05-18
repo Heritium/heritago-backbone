@@ -27,6 +27,7 @@
     "mui": "^0.5.7",
     "jquery": "^2.2.3",
     "material-design-icons": "^2.2.3",
-    "scriptjs": "^2.5.8"
+    "scriptjs": "^2.5.8",
+    "quojs": "^3.0.7"
   }
 }

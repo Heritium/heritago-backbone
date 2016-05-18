@@ -10,20 +10,22 @@ var HeritagoMap = Izzel.Component.extend({
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         disableDefaultUI: true,
     },
+
     map: undefined,
     userLocation: undefined,
 
     initialize: function() {
         this.render();
 
+        this.infowindow = new google.maps.InfoWindow({content:"Posisi Anda"});
         var currentLocation = new google.maps.LatLng(-7.801389, 110.364444);
         this.mapOption.center = currentLocation;
-
         this.map = new google.maps.Map(this.el, this.mapOption);
         this.service = new google.maps.places.PlacesService(this.map);
         google.maps.event.addListenerOnce(this.map, 'bounds_changed', search);
+        
         this.locateUser();
-        this.search("hotel");
+        this.search("....");
 
         // Put model listener here
     },
@@ -62,6 +64,11 @@ var HeritagoMap = Izzel.Component.extend({
             position: currentLocation,
             map: this.map
         });
+        console.log(marker);
+        
+        google.maps.event.addListener(marker,'click',(function(){
+            this.infowindow.open(this.map,marker);
+        }).bind(this))
     },
 });
 

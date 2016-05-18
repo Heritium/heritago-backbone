@@ -4,7 +4,7 @@ var _ = require('underscore');
 var HeritagoMap = Izzel.Component.extend({
     layout: require('./heritago-map.hbs'),
     el: 'heritago-map',
-    mapOption:{
+    mapOption: {
         center: undefined,
         zoom: 12,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -42,7 +42,7 @@ var HeritagoMap = Izzel.Component.extend({
 
     onSearchResultAvailable(results, status) {
         console.log(results);
-        for(var i=0; i<results.length; i++){
+        for (var i=0; i<results.length; i++) {
             var marker = new google.maps.Marker({
                 position : results[i].geometry.location,
                 map: this.map,
@@ -65,7 +65,7 @@ var HeritagoMap = Izzel.Component.extend({
             map: this.map
         });
         console.log(marker);
-        
+
         google.maps.event.addListener(marker,'click',(function(){
             this.infowindow.open(this.map,marker);
         }).bind(this))

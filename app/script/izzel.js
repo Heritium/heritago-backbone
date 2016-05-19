@@ -2,6 +2,38 @@ var Izzel = require('backbone');
 var Handlebars = require('handlebars');
 var _ = require('underscore');
 
+/*
+ * Dependency Utility
+ */
+Izzel.R = {
+    scriptdir: 'app/script',
+    styledir: 'app/style',
+    externalScript: function(url, callback) {
+        return $script(url, callback);
+    },
+    script: function(namespace, isComponentName) {
+        var styleLoader = require.context("../component", true, /^\.\/.*\.js$/);
+        if (!isComponentName) {
+            url = namespace + '/' + namespace + '.js';
+        }
+        return styleLoader('!raw!./' + url);
+    },
+    style: function(namespace, isComponentName) {
+        var styleLoader = require.context("../component", true, /^\.\/.*\.scss$/);
+        if (!isComponentName) {
+            url = namespace + '/' + namespace + '.scss';
+        }
+        return styleLoader('./' + url);
+    },
+    layout: function(namespace, isComponentName) {
+        var layoutLoader = require.context("../component", true, /^\.\/.*\.hbs$/);
+        if (!isComponentName) {
+            url = namespace + '/' + namespace + '.hbs';
+        }
+        return layoutLoader('./' + url);
+    }
+};
+
 var SharedExtension = Izzel.View.extend({
     el: '',
     layout: '',

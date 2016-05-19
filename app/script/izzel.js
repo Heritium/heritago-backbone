@@ -43,9 +43,8 @@ Izzel.ShoutSocket = _.clone(Izzel.Events);
 Izzel.ShoutSocket.shout = Izzel.ShoutSocket.trigger;
 Izzel.ShoutSocket.listen = Izzel.ShoutSocket.on;
 
-var SharedExtension = Izzel.View.extend({
-    el: '',
-    layout: '',
+var ExtendedView = Izzel.View.extend({
+    name: 'component-default',
     dependencies: {},
     components: {},
 

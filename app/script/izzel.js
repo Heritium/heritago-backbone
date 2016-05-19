@@ -75,10 +75,27 @@ var ExtendedView = Izzel.View.extend({
     },
 });
 
-Izzel.Component = SharedExtension.extend({
+Izzel.Component = ExtendedView.extend({
     initialize: function() {
-        this.render({});
+        if (!(/^[-a-zA-Z0-9]+$/).test(this.name)) {
+            this.name = this.name.replace(' ', '-')
+                .replace(/[^0-9a-z-]/gi, '');
+        }
+
+        // If el property unset, use component's name if available
+        if (this.el == undefined && this.name != undefined) {
+            this.el = this.name;
+            this._ensureElement();
+        }
+
+        // Load layout
+        this.layout = Izzel.R.layout(this.name);
+
+        this.draw(this.models);
+        this.onCreate(arguments);
     },
+
+    onCreate: function(arg) {},
 
     getAttributes: function() {
         var attrs = this.el.attributes;
@@ -96,35 +113,40 @@ Izzel.Component = SharedExtension.extend({
         return attrs[key];
     },
 
-    render: function(context) {
-        this.beforeRender();
+    draw: function(context) {
+        this.style = Izzel.R.style(this.name);
+
+        this.beforeDrawn();
+        console.log('Rendering with context ', context, this.getSelector());
         // Marking custom element
         if (!this.$el.hasClass('izzel-component')) {
             this.$el.addClass('izzel-component');
         }
         this._render(context);
-        this.afterRender();
+        this.afterDrawn();
     },
 
-    beforeRender: function() {},
-    afterRender: function() {}
+    beforeDrawn: function() {},
+    afterDrawn: function() {}
 });
 
-Izzel.Activity = SharedExtension.extend({
+Izzel.Activity = ExtendedView.extend({
     el: 'activity',
+    models: {},
 
     initialize: function() {
-        this.render({});
+        this.beforeCreate();
+        this.onCreate();
+        this.draw(this.models);
+        this.name = this.name || 'activity-' + this.cid;
     },
 
-    render: function(context) {
-        this.beforeCreate();
+    draw: function(context) {
         // Marking activity
         if (!this.$el.hasClass('izzel-activity')) {
             this.$el.addClass('izzel-activity');
         }
         this._render(context);
-        this.onCreate();
     },
 
     beforeCreate: function() {},

@@ -34,6 +34,15 @@ Izzel.R = {
     }
 };
 
+/*
+ * Essential Backbone Module Extension
+ */
+
+Izzel.ShoutSocket = _.clone(Izzel.Events);
+// TODO: Review teammate's response
+Izzel.ShoutSocket.shout = Izzel.ShoutSocket.trigger;
+Izzel.ShoutSocket.listen = Izzel.ShoutSocket.on;
+
 var SharedExtension = Izzel.View.extend({
     el: '',
     layout: '',

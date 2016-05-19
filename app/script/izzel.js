@@ -57,6 +57,9 @@ var ExtendedView = Izzel.View.extend({
     },
 
     template: function(layout, context) {
+        if (typeof layout === 'function') {
+            layout = layout();
+        }
         layout = Handlebars.compile(layout);
         return layout(context);
     },

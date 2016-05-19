@@ -27,11 +27,13 @@ var webpackConfig = {
     resolve: {
     root: [
         path.resolve(appdir),
-        path.resolve(scriptdir)
+        path.resolve(scriptdir),
+        path.resolve(libdestdir),
     ]},
     module: {
         loaders: [
-            { test: /\.hbs$/, loader: "raw-loader" }
+            { test: /\.hbs$/, loader: "raw-loader" },
+            { test: /\.scss$/, loaders: ["style", "css", "sass"] }
         ]
     },
     plugins: [
@@ -82,7 +84,7 @@ gulp.task('watch', function() {
 });
 
 // Publisher
-gulp.task('publish', ['publish:html', 'publish:script', 'publish:style']);
+gulp.task('publish', ['publish:html', 'publish:script'/*, 'publish:style'*/]);
 
 gulp.task('publish:html', function(){
     return gulp.src(appdir + 'index.html')

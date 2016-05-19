@@ -24,8 +24,5 @@ var HeritagoRouter = Izzel.Router.extend({
     },
 });
 
-window.izzel = {
-    route: new HeritagoRouter(),
-    dispatcher: _.clone(Izzel.Events)
-};
+Izzel.route = new ActivityManager();
 Izzel.history.start();

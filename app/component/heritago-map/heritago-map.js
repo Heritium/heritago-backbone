@@ -7,7 +7,7 @@ var HeritagoMap = Izzel.Component.extend({
     mapOption: {
         center: undefined,
         zoom: 12,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeId: undefined,
         disableDefaultUI: true,
     },
 
@@ -16,16 +16,19 @@ var HeritagoMap = Izzel.Component.extend({
 
     initialize: function() {
         this.render();
+        $script.ready('google-maps-api', (function() {
+            this.mapOption.mapTypeId = google.maps.MapTypeId.ROADMAP;
 
-        this.infowindow = new google.maps.InfoWindow({content:"Posisi Anda"});
-        var currentLocation = new google.maps.LatLng(-7.801389, 110.364444);
-        this.mapOption.center = currentLocation;
-        this.map = new google.maps.Map(this.el, this.mapOption);
-        this.service = new google.maps.places.PlacesService(this.map);
-        google.maps.event.addListenerOnce(this.map, 'bounds_changed', search);
-        
-        this.locateUser();
-        this.search("....");
+            var currentLocation = new google.maps.LatLng(-7.801389, 110.364444);
+            this.mapOption.center = currentLocation;
+
+            this.infowindow = new google.maps.InfoWindow({content:"Posisi Anda"});
+
+            this.locateUser();
+            this.search("....");
+        }).bind(this), function() {
+            console.log('Google Maps API not available');
+        });
 
         // Put model listener here
     },

@@ -145,6 +145,8 @@ Izzel.Activity = ExtendedView.extend({
     },
 
     draw: function(context) {
+        this.style = Izzel.R.style(this.name, 'activity');
+
         // Marking activity
         if (!this.$el.hasClass('izzel-activity')) {
             this.$el.addClass('izzel-activity');

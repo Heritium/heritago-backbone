@@ -36,6 +36,12 @@ var webpackConfig = {
             { test: /\.scss$/, loaders: ["style", "css", "sass"] }
         ]
     },
+    sassLoader: {
+        includePaths: [
+            path.resolve(libdestdir, 'mui/src/sass/'),
+            path.resolve(appdir, "./style/"),
+        ]
+    },
     plugins: [
         new webpack.ResolverPlugin([new DirectoryNameAsMain()])
     ],

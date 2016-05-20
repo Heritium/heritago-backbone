@@ -2,9 +2,7 @@ var Izzel = require('backbone');
 var Handlebars = require('handlebars');
 var _ = require('underscore');
 
-/*
- * Dependency Utility
- */
+/* # Dependency Utility */
 Izzel.R = {
     scriptdir: 'app/script',
     styledir: 'app/style',
@@ -37,15 +35,18 @@ Izzel.R = {
     }
 };
 
-/*
- * Essential Backbone Module Extension
- */
+/* # Essential Backbone Module Extension */
 
+/* ## ShoutSocket
+ * Instance of Backbone Events resemble socket where component can shout and listen on.
+ * See Backbone.Events documentation. */
 Izzel.ShoutSocket = _.clone(Izzel.Events);
 // TODO: Review teammate's response
 Izzel.ShoutSocket.shout = Izzel.ShoutSocket.trigger;
 Izzel.ShoutSocket.listen = Izzel.ShoutSocket.on;
 
+/* ## ExtendedView
+ * Private module which is the parent of Activity and Component. */
 var ExtendedView = Izzel.View.extend({
     name: 'component-default',
     dependencies: {},
@@ -78,6 +79,9 @@ var ExtendedView = Izzel.View.extend({
     },
 });
 
+/* ## Component
+ * A component represent one UI element, reponsible of it's action and response
+ * upon user interaction. */
 Izzel.Component = ExtendedView.extend({
     initialize: function() {
         if (!(/^[-a-zA-Z0-9]+$/).test(this.name)) {
@@ -133,6 +137,9 @@ Izzel.Component = ExtendedView.extend({
     afterDrawn: function() {}
 });
 
+/* ## Activity
+ * An activity just like component, but the element full-sized to screen size and
+ * as a place for components to live. */
 Izzel.Activity = ExtendedView.extend({
     el: 'activity',
     models: {},

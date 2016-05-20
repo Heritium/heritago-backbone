@@ -2,7 +2,7 @@ var Izzel = require('izzel');
 var _ = require('underscore');
 
 var ExploreActivity = Izzel.Activity.extend({
-    layout: require('./explore.hbs'),
+    name: 'explore',
     dependencies: {
         /* 'selector': require('component') */
         'side-drawer': require('component/side-drawer'),

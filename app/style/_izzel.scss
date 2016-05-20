@@ -1,0 +1,21 @@
+@import "mui/colors";
+@import "mui/variables";
+@import "mui/mixins";
+
+/* Izzel Style Helper
+ */
+@mixin izzel-activity($display: block, $overflow: hidden) {
+    // All custom element style
+    display: $display;
+    overflow: $overflow;
+    height: 100%;
+    width: 100%;
+}
+
+@mixin izzel-component($display: block, $overflow: hidden) {
+    // All custom element style
+    display: $display;
+    overflow: $overflow;
+}
+
+

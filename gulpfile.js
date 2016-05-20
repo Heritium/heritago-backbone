@@ -78,11 +78,11 @@ gulp.task('watch', function() {
 
     gulp.watch([
         componentdir + '**/*',
-    ], ['publish:script', 'publish:style']);
+    ], ['publish:script']);
 
     gulp.watch([
         activitydir + '**/*',
-    ], ['publish:script', 'publish:style']);
+    ], ['publish:script']);
 
     gulp.watch([
         fontdir + '**/*',
@@ -90,7 +90,7 @@ gulp.task('watch', function() {
 });
 
 // Publisher
-gulp.task('publish', ['publish:html', 'publish:script'/*, 'publish:style'*/]);
+gulp.task('publish', ['publish:html', 'publish:script', 'publish:style']);
 
 gulp.task('publish:html', function(){
     return gulp.src(appdir + 'index.html')

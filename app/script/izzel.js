@@ -11,24 +11,27 @@ Izzel.R = {
     externalScript: function(url, callback) {
         return $script(url, callback);
     },
-    script: function(namespace, isComponentName) {
-        var styleLoader = require.context("../component", true, /^\.\/.*\.js$/);
-        if (!isComponentName) {
-            url = namespace + '/' + namespace + '.js';
+    script: function(namespace, namespaceType) {
+        namespaceType = namespaceType || 'component';
+        var scriptLoader = require.context('../', true, /^\.\/.*\.js$/);
+        if (namespaceType == 'activity' || namespaceType == 'component') {
+            url = namespaceType + '/' + namespace + '/' + namespace + '.js';
         }
-        return styleLoader('!raw!./' + url);
+        return scriptLoader('./' + url);
     },
-    style: function(namespace, isComponentName) {
-        var styleLoader = require.context("../component", true, /^\.\/.*\.scss$/);
-        if (!isComponentName) {
-            url = namespace + '/' + namespace + '.scss';
+    style: function(namespace, namespaceType) {
+        namespaceType = namespaceType || 'component';
+        var styleLoader = require.context('../', true, /^\.\/.*\.scss$/);
+        if (namespaceType == 'activity' || namespaceType == 'component') {
+            url = namespaceType + '/' + namespace + '/' + namespace + '.scss';
         }
         return styleLoader('./' + url);
     },
-    layout: function(namespace, isComponentName) {
-        var layoutLoader = require.context("../component", true, /^\.\/.*\.hbs$/);
-        if (!isComponentName) {
-            url = namespace + '/' + namespace + '.hbs';
+    layout: function(namespace, namespaceType) {
+        namespaceType = namespaceType || 'component';
+        var layoutLoader = require.context('../', true, /^\.\/.*\.hbs$/);
+        if (namespaceType == 'activity' || namespaceType == 'component') {
+            url = namespaceType + '/' + namespace + '/' + namespace + '.hbs';
         }
         return layoutLoader('./' + url);
     }

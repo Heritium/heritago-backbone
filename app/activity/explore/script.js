@@ -5,10 +5,10 @@ var ExploreActivity = Izzel.Activity.extend({
     name: 'explore',
     dependencies: {
         /* 'selector': require('component') */
-        'side-drawer': require('component/side-drawer'),
-        'float-bar': require('component/float-bar'),
-        'heritago-map': require('component/heritago-map'),
-        'heritago-button': require('component/heritago-button'),
+        'side-drawer': Izzel.R.script('side-drawer'),
+        'float-bar': Izzel.R.script('float-bar'),
+        'heritago-map': Izzel.R.script('heritago-map'),
+        'heritago-button': Izzel.R.script('heritago-button'),
     },
 
     onCreate: function() {

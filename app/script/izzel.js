@@ -13,15 +13,21 @@ Izzel.R = {
         namespaceType = namespaceType || 'component';
         var scriptLoader = require.context('../', true, /^\.\/.*\.js$/);
         if (namespaceType == 'activity' || namespaceType == 'component') {
-            url = namespaceType + '/' + namespace + '/' + namespace + '.js';
+            url = namespaceType + '/' + namespace + '/script.js';
         }
         return scriptLoader('./' + url);
+    },
+    component: function(namespace) {
+        return this.script(namespace);
+    },
+    activity: function(namespace) {
+        return this.script(namespace, 'activity');
     },
     style: function(namespace, namespaceType) {
         namespaceType = namespaceType || 'component';
         var styleLoader = require.context('../', true, /^\.\/.*\.scss$/);
         if (namespaceType == 'activity' || namespaceType == 'component') {
-            url = namespaceType + '/' + namespace + '/' + namespace + '.scss';
+            url = namespaceType + '/' + namespace + '/style.scss';
         }
         return styleLoader('./' + url);
     },
@@ -29,7 +35,7 @@ Izzel.R = {
         namespaceType = namespaceType || 'component';
         var layoutLoader = require.context('../', true, /^\.\/.*\.hbs$/);
         if (namespaceType == 'activity' || namespaceType == 'component') {
-            url = namespaceType + '/' + namespace + '/' + namespace + '.hbs';
+            url = namespaceType + '/' + namespace + '/layout.hbs';
         }
         return layoutLoader('./' + url);
     }

@@ -1,7 +1,7 @@
 var Izzel = require('izzel');
 var _ = require('underscore');
 
-var ExploreActivity = require('activity/explore');
+var ExploreActivity = Izzel.R.activity('explore');
 
 var HeritagoRouter = Izzel.Router.extend({
 

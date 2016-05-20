@@ -2,19 +2,17 @@ var Izzel = require('izzel');
 var _ = require('underscore');
 
 var HeritagoButton = Izzel.Component.extend({
-    layout: require('./heritago-button.hbs'),
-    el: 'heritago-button',
+    name: 'heritago-button',
     events: {
         'click button': 'buttonClick'
     },
 
-    initialize: function() {
-        this.render();
+    onCreate: function() {
         // Put model listener here
     },
 
     buttonClick: function() {
-        window.izzel.dispatcher.trigger('heritago-button:click', this.el);
+        this.trigger('heritago-button:click', this.el);
     }
 });
 

@@ -2,8 +2,7 @@ var Izzel = require('izzel');
 var _ = require('underscore');
 
 var HeritagoMap = Izzel.Component.extend({
-    layout: require('./heritago-map.hbs'),
-    el: 'heritago-map',
+    name: 'heritago-map',
     mapOption: {
         center: undefined,
         zoom: 12,
@@ -14,8 +13,7 @@ var HeritagoMap = Izzel.Component.extend({
     map: undefined,
     userLocation: undefined,
 
-    initialize: function() {
-        this.render();
+    onCreate: function() {
         $script.ready('google-maps-api', (function() {
             this.mapOption.mapTypeId = google.maps.MapTypeId.ROADMAP;
 

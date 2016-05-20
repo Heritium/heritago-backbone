@@ -2,19 +2,15 @@ var Izzel = require('izzel');
 var _ = require('underscore');
 
 var SideDrawer = Izzel.Component.extend({
-    layout: require('./side-drawer.hbs'),
-    el: 'side-drawer',
+    name: 'side-drawer',
     events: {
         'click .active-shader': 'toggleVisibility',
         'keyup input': 'search',
     },
-    initialize: function() {
-        // This should be called on initialization
-        this.render();
-
+    onCreate: function() {
         // Put model listener here
         // Event listener
-        window.izzel.dispatcher.on('floatbar:toggle-side-drawer', this.toggleVisibility, this);
+        Izzel.ShoutSocket.on('floatbar:toggle-side-drawer', this.toggleVisibility, this);
     },
     toggleVisibility: function() {
         var state = this.$el.hasClass('active');

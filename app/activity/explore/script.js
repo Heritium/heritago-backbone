@@ -12,8 +12,7 @@ var ExploreActivity = Izzel.Activity.extend({
     },
 
     onCreate: function() {
-        console.log('Materialize init');
-        $(".button-collapse").sideNav();
+        console.log('Activity explore created.');
     }
 });
 

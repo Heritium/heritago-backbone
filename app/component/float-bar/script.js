@@ -16,8 +16,14 @@ var FloatBar = Izzel.Component.extend({
         console.log('[EVENT] floatbar:toggle-side-drawer ', this.el);
     },
     onSearchInput: function(ev) {
-        var text = this.$el.children('input').val();
-        Izzel.ShoutSocket.trigger('searchbar:change', this.el, text);
+        var text = this.$el.find('input#search').val();
+
+        // Enter pressed
+        if (ev.which == 13) {
+            Izzel.ShoutSocket.trigger('float-bar:search', this.el, text);
+        }
+
+        Izzel.ShoutSocket.trigger('float-bar:text-change', this.el, text);
         console.log('[EVENT] searchbar:change of ', this.el, ' <', text, '>');
     }
 });

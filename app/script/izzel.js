@@ -48,7 +48,7 @@ Izzel.R = {
     script: function(namespace, namespaceType) {
         namespaceType = namespaceType || 'component';
         var scriptLoader = require.context('../', true, /^\.\/.*\.js$/);
-        if (namespaceType == 'activity' || namespaceType == 'component') {
+        if (['activity', 'component', 'model'].indexOf(namespaceType) !== -1) {
             url = namespaceType + '/' + namespace + '/script.js';
         }
         return scriptLoader('./' + url);
@@ -58,6 +58,9 @@ Izzel.R = {
     },
     activity: function(namespace) {
         return this.script(namespace, 'activity');
+    },
+    model: function(namespace) {
+        return this.script(namespace, 'model');
     },
     style: function(namespace, namespaceType) {
         namespaceType = namespaceType || 'component';

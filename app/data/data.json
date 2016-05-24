@@ -1,0 +1,49 @@
+{
+  "heritage": [
+	{
+		"name": "Keraton Yogyakarta",
+		"description": "Keraton Yogyakarta yang terletak di tengah kota Yogyakarta ini memiliki beberapa museum, yaitu Museum Lukisan, Museum Sri Sultan Hamengkubuwono IX, Museum Kereta, dan Museum Batik. Di samping itu, hampir seluruh bagian kraton digunakan sebagai tempat penyimpanan benda-benda budaya bernilai, termasuk replikanya. Di kompleks Pagelaran, misalnya, diperagakan berbagai pakaian prajurit dan pakaian adat keluarga keraton. Museum ini dibuka untuk umum setiap hari kecuali pada saat terdapat upacara. Museum buka mulai jam 08.30 hingga 14.00 wib, kecuali hari Jumat yang buka hingga pukul 13.00 wib. Selain benda-benda budaya dan arsitektur, pengunjung juga dapat melihat pertunjukan seperti macapat, kerawitan, wayang kulit, serta wayang orang, yang dipentaskan di bangsal Sri Manganti, sekitar pukul 10.00-12.00.",
+		"location": "Jl. Rotowijayan 1, Yogyakarta 55133, Indonesia",
+    "position": {
+      "Langitude":-7.805284,
+      "Latitude": 110.364203
+    }
+	},
+	{
+		"name": "Museum Sonobudoyo" ,
+		"description": "Museum sonobudoyo adalah museum sejarah, kebudayaan Jawa dan bangungan arsitektur klasik jawa yang dianggap paling lengkap setelah Museum Nasional Republik Indonesia di Jakarta. Museum ini menyimpan koleksi mengenai Budaya dan Sejarah Jawa seperti keramik pada zaman Neolitik, patung perunggu dari abad ke-8 dan juga beberapa macam bentuk wayang kulit, berbagai senjata kuno(termasuk keris) serta topeng Jawa.  Museum ini dikelola oleh Unit Pelaksana Teknis Daerah dari Dinas Kebudayaan Provinsi DIY  dalam hal merawat, pengawetan,melaksanakan penelitian, pelayanan pustaka, bimbingan edukatif cultural serta penyajian benda koleksi. Beragam koleksi mulai dari peninggalan purbakala, arca candi yang ditemukan di sekitar Prambanan, koleksi batik, keris kuno sampai koleksi wayang memenuhi setiap ruang Museum Sonobudoyo.",
+		"location": "Museum Sonobudoyo terbagi menjadi 2 unit, Unit pertama terletak di Jl.Trikora no.6 Yogyakarta dan Unit dua terletak di Ndalem Condrokiranan Wijilan Yogyakarta. Museum buka setiap hari kecuali hari Senin mulai pukul 08.00 – 15.00, tiket masuk hanya 3.000 rupiah.",
+    "position": {
+      "Langitude":-7.802306,
+      "Latitude": 110.363902
+    }
+	},
+	{
+		"name": "Museum Affandi" ,
+		"description": "Museum affandi adalah museum yang menyimpan mahakarya salah satu maestro pelukis Indonesia yaitu Affandi Koesoema. Museum ini terdiri dari empat galeri, ruangan pertama berisi koleksi lukisan Affandi yang dilukis pada awal karirnya, kemudian ruang kedua berisi lukisan yang tergolong mahal dan banyak diincar banyak kolektor. Namun semua karya beliau tidak diperjualbelikan sehingga pengunjung hanya dapat menikmati keindahan warna di setiap lukisan saja. Galeri ketiga berisi koleksi lukisan hasil karya putri-putri beliau yang bernama Kartika dan Rukmini. Dan yang terakhir terdapat gallery Gajah Wong yang memamerkan hasil karya cucu beliau dari anak Kartika.",
+		"location": "Jl. Laksda Adisucipto No.167, Catur Tunggal, Kec. Sleman, Kabupaten Sleman, Daerah Istimewa Yogyakarta. Museum Affandi buka mulai pukul 09.00 – 16.00 dengan harga tiket masuk 20.000",
+    "position": {
+      "Langitude":-7.78294444444444,
+      "Latitude": 110.396333333333
+    }
+	},
+	{
+		"name": "Museum Ullen Sentalu" ,
+		"description": "Museum Ullen Sentalu adalah museum yang menyelamatkan karya-karya  batik kuno yang diburu oleh kolektor asing.",
+		"location": "Jalan Boyong KM 25, Kaliurang Barat, Kec. Sleman, Daerah Istimewa Yogyakarta. Jam buka : 08.30 - 16.00. Buka tiap hari dari Selasa hingga Minggu. Senin tutup.",
+    "position": {
+      "Langitude":-7.597140,
+      "Latitude": 110.424170
+    }
+	},
+	{
+		"name": "Taman Sari",
+		"description": "Taman sari merupakan salah satu bangunan bersejarah yang terletak di sebelah barat kawan kraton dalam ruang lingkup benteng istana. Taman sari merupakan istana air yang pada masanya berfungsi sebagai tempat rekreasi, pesanggrahan dan benteng pertahanan bagi Sultan Isri Sulatan dan segenap keluarga Keraton Yogyakarta. Hal ini tampak dari adanya segaran yang lengkap dengan perahunya, lorong-lorong bawah tanah, kolam pemandian dan tempat ganti pakaian, kolam latihan berenang, ruang untuk menari, dapur dan sebagainya. Di sekitar Taman Sari juga terdapat Kampung Taman yang merupakan sentra kerajinan batik khususnya lukisan batik. Mitos : Tempat yang juga dikenal sebagai Water Castle merupakan bangunan bersejarah yang mulai berdiri tahun pertengahan abad XVIII M dan dibangun pada masa pemerintahan Sultan Hamengku Buwana I. Konon secara simbolik taman sari dapat diartikan sebagai alat penghubung yang secara tidak langsung menghubungkan lahir dan bathin antara Sultan dan rakyatnya.",
+		"location": "Jl. Taman, Kraton, Yogyakarta 55133, Indonesia",
+    "position": {
+      "Langitude": -7.809940,
+      "Latitude": 110.359390
+    }
+	}
+]
+}

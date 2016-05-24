@@ -3,7 +3,7 @@ var _ = require('underscore');
 
 var ExploreActivity = Izzel.R.activity('explore');
 
-var HeritagoRouter = Izzel.Router.extend({
+var ActivityManager = Izzel.Router.extend({
 
     routes: {
         "":                     "explore",

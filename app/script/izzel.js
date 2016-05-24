@@ -119,15 +119,27 @@ var ExtendedView = Izzel.View.extend({
         for (dep in this.dependencies) {
             var depSelector = this.getSelector() + ' ' + dep;
 
-            this.components[dep] = new this.dependencies[dep]({ el: depSelector });
+            var dataset = this.dataset[dep];
+            this.components[dep] = new this.dependencies[dep]({
+                el: depSelector,
+                dataset: dataset
+            });
         }
     },
 });
+
+var viewOptions = ['model', 'collection', 'el', 'id', 'attributes', 'className', 'tagName', 'events', 'dataset'];
 
 /* ## Component
  * A component represent one UI element, reponsible of it's action and response
  * upon user interaction. */
 Izzel.Component = ExtendedView.extend({
+    constructor: function(options) {
+        this.cid = _.uniqueId('view');
+        _.extend(this, _.pick(options, viewOptions));
+        this._ensureElement();
+        this.initialize.apply(this, arguments);
+    },
     initialize: function() {
         if (!(/^[-a-zA-Z0-9]+$/).test(this.name)) {
             this.name = this.name.replace(' ', '-')

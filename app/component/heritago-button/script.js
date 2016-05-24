@@ -12,7 +12,7 @@ var HeritagoButton = Izzel.Component.extend({
     },
 
     buttonClick: function() {
-        this.trigger('heritago-button:click', this.el);
+        Izzel.ShoutSocket.trigger('heritago-button:click', this.el);
     }
 });
 

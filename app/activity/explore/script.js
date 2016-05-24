@@ -14,6 +14,7 @@ var ExploreActivity = Izzel.Activity.extend({
         'side-drawer': Izzel.R.component('side-drawer'),
         'float-bar': Izzel.R.component('float-bar'),
         'heritago-map': Izzel.R.component('heritago-map'),
+        'NearbyList': Izzel.R.component('nearby-list'),
         'heritago-button': Izzel.R.component('heritago-button'),
     },
     dataset: {

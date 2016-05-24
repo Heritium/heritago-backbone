@@ -14,21 +14,52 @@ var HeritagoMap = Izzel.Component.extend({
     userLocation: undefined,
 
     onCreate: function() {
-        $script.ready('google-maps-api', (function() {
-            this.mapOption.mapTypeId = google.maps.MapTypeId.ROADMAP;
-
-            var currentLocation = new google.maps.LatLng(-7.801389, 110.364444);
-            this.mapOption.center = currentLocation;
-
-            this.infowindow = new google.maps.InfoWindow({content:"Posisi Anda"});
-
-            this.locateUser();
-            this.search("....");
+        Izzel.R.externalScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBcpeXFen5-DlcI0KluoT-jEaqbdXSk-hk&libraries=places', (function() {
+            console.log('Google Map API successfully loaded, wait till available..');
+            // Ensure Google Map API available
+            var counter = 0;
+            function periodicalCheck() {
+                if (typeof google !== 'undefined') {
+                    clearInterval(handle);
+                    this.onGoogleMapAPIReady.apply(this);
+                }
+                if (counter > 100) {
+                    console.log('Google Maps API not available. Check your connection.');
+                    clearInterval(handle);
+                }
+                counter++;
+            }
+            var handle = setInterval(periodicalCheck.bind(this), 1000);
         }).bind(this), function() {
-            console.log('Google Maps API not available');
+            console.log('Google Maps API not available. Check your connection.');
         });
 
         // Put model listener here
+    },
+    onGoogleMapAPIReady: function() {
+        this.mapOption.mapTypeId = google.maps.MapTypeId.ROADMAP;
+        var currentLocation = new google.maps.LatLng(-7.801389, 110.364444);
+        this.mapOption.center = currentLocation;
+        this.map = new google.maps.Map(this.$el.find('.maps').get(0), this.mapOption);
+
+        this.infowindow = new google.maps.InfoWindow({content:"Posisi Anda"});
+
+        this.locateUser();
+        // this.search("....");
+
+        Izzel.ShoutSocket.on('heritago-button:click', (function(el) {
+            console.log('[EVENT] heritago-map: listen to heritago-button:click');
+            this.searchNearby();
+        }).bind(this));
+
+        Izzel.ShoutSocket.on('float-bar:search', (function(el, text) {
+            console.log('[EVENT] heritago-map: listen to float-bar:search of ', text);
+            this.search(text);
+        }).bind(this));
+    },
+
+    panNearbyHeritage: function() {
+        console.log('[MOCK_ACT] heritago-map: panning to nearby heritage');
     },
 
     search: function(keyword) {

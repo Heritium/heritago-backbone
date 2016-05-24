@@ -6,8 +6,44 @@ var _ = require('underscore');
 Izzel.R = {
     scriptdir: 'app/script',
     styledir: 'app/style',
-    externalScript: function(url, callback) {
-        return $script(url, callback);
+    externalScript: function() {
+        var url;
+        var parameters;
+        var callbacks = [];
+        Array.from(arguments).splice(0, 4).forEach(function(arg, index, arr) {
+            if (typeof arg == 'string' && typeof url != 'string') {
+                url = arg;
+            }
+            if (typeof arg == 'object' && typeof parameters != 'object') {
+                parameters = arg;
+            }
+            if (typeof arg == 'function') {
+                callbacks[callbacks.length] = arg;
+            }
+        });
+        var onerror = (callbacks.length == 2)? callbacks.pop() : undefined;
+        var onsuccess = callbacks.pop();
+
+        // Avoid duplication
+        var isExist = false;
+        $('script').each(function(index, script) {
+            isExist = RegExp(url.split('?')[0]).test(script.src);
+            if (isExist) {
+                return false;
+            }
+        });
+
+        // Cancel when url invalid or duplicated
+        if (!url || isExist) return;
+
+        el = document.createElement('script');
+        for (var key in parameters) {
+            url += (url.indexOf('?') === -1 ? '?' : '&') + key + '=' + parameters[key]
+        }
+        el.src = url;
+        el.onreadystatechange = el.onload = onsuccess;
+        el.onerror = onerror;
+        document.head.appendChild(el);
     },
     script: function(namespace, namespaceType) {
         namespaceType = namespaceType || 'component';

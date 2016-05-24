@@ -85,7 +85,7 @@ Izzel.R = {
 /* ## ShoutSocket
  * Instance of Backbone Events resemble socket where component can shout and listen on.
  * See Backbone.Events documentation. */
-Izzel.ShoutSocket = _.clone(Izzel.Events);
+Izzel.ShoutSocket = Izzel.ShoutSocket? Izzel.ShoutSocket : _.clone(Izzel.Events);
 // TODO: Review teammate's response
 Izzel.ShoutSocket.shout = Izzel.ShoutSocket.trigger;
 Izzel.ShoutSocket.listen = Izzel.ShoutSocket.on;

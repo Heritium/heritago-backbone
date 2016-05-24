@@ -3,7 +3,7 @@ var _ = require('underscore');
 
 // Dataset
 var Heritage = Izzel.R.model('Heritage');
-var Heritages = new Izzel.Collection({
+var Heritages = Izzel.Collection.extend({
     model: Heritage
 });
 

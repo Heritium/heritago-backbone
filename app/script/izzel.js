@@ -205,12 +205,13 @@ Izzel.Activity = ExtendedView.extend({
 
     initialize: function() {
         this.beforeCreate();
-        this.onCreate();
 
         // Load layout
         this.layout = Izzel.R.layout(this.name, 'activity');
 
         this.draw(this.models);
+        this.onCreate(arguments);
+
         this.name = this.name || 'activity-' + this.cid;
     },
 
